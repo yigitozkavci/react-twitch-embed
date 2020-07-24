@@ -95,7 +95,9 @@ class TwitchPlayer extends Component {
     if (updatedPropsExceptMedia.length > 0) {
       this.player = null;
       document.getElementById(prevProps.id).innerHTML = '';
-      return this._createPlayer();
+      if (window.Twitch && window.Twitch.Player) {
+        return this._createPlayer();
+      }
     }
 
     if (prevProps.channel !== this.props.channel && this.props.channel) {
